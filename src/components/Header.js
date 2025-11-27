@@ -1,15 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import './Header.css'; // Import component-specific CSS
 
 function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const location = useLocation(); // Get current location
-    const isFreelancePage = location.pathname === '/services/freelance-website-design';
+    const isFreelancePage = location.pathname.includes('/services');
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
+
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isMobileMenuOpen]);
+
+    const handleLinkClick = () => {
+        setIsMobileMenuOpen(false);
+    };
+
+    const NavigationLinks = ({ isMobile }) => (
+        <>
+            <NavLink to="/" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} onClick={handleLinkClick}>
+                Home
+            </NavLink>
+            <div className={`nav-item dropdown ${isFreelancePage ? 'freelance-page' : ''}`}>
+                <NavLink
+                    to="/services/freelance-website-design"
+                    className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+                    onClick={isMobile ? (e) => e.preventDefault() : handleLinkClick}
+                >
+                    Services
+                </NavLink>
+                <div className="dropdown-content">
+                    <NavLink to="/services/freelance-website-design" className="dropdown-item" onClick={handleLinkClick}>
+                        Freelance Website Design
+                    </NavLink>
+                    <NavLink to="/services/mobile-app-development" className="dropdown-item" onClick={handleLinkClick}>
+                        Mobile App Development
+                    </NavLink>
+                </div>
+            </div>
+            <NavLink to="/contact" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} onClick={handleLinkClick}>
+                Contact
+            </NavLink>
+        </>
+    );
 
     return (
         <header>
@@ -25,37 +68,28 @@ function Header() {
                     </div>
                 </div>
                 <div className="right-section">
-                    {/* Burger Menu Button - Hidden on Desktop by CSS */}
-                    <button className="burger-menu" onClick={toggleMobileMenu} aria-label="Toggle menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-
-                    {/* Navigation Links - Class changes based on state for mobile */}
-                    <nav className={isMobileMenuOpen ? 'main-nav mobile-nav-open' : 'main-nav'}>
-                        {/* Close button for mobile */}
-                        <button className="close-menu" onClick={toggleMobileMenu} aria-label="Close menu">&times;</button>
-                        <NavLink to="/" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} onClick={() => setIsMobileMenuOpen(false)}>Home</NavLink>
-                        <div className={`nav-item dropdown ${isFreelancePage ? 'freelance-page' : ''}`}>
-                            {/* The NavLink for Services needs careful handling if it's also a trigger */}
-                            <NavLink
-                                to="/services/freelance-website-design"
-                                className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
-                                // Keep mobile menu open when clicking the main Services link if needed, or close it
-                                // onClick={() => setIsMobileMenuOpen(false)} // Example: Close menu on click
-                                aria-current="page"
-                            >
-                                Services
-                            </NavLink>
-                            <div className="dropdown-content">
-                                <NavLink to="/services/freelance-website-design" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>Freelance Website Design</NavLink>
-                                {/* Add other service links here, ensure they also close the menu */}
-                                <NavLink to="/services/mobile-app-development" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>Mobile App Development</NavLink>
-                            </div>
-                        </div>
-                        <NavLink to="/contact" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} onClick={() => setIsMobileMenuOpen(false)}>Contact</NavLink>
+                    {/* Desktop Navigation */}
+                    <nav className="desktop-nav">
+                        <NavigationLinks isMobile={false} />
                     </nav>
+
+                    {/* Mobile Navigation */}
+                    <div className={`mobile-nav-container ${isMobileMenuOpen ? 'menu-open' : ''}`}>
+                        <button
+                            className="burger-menu"
+                            onClick={toggleMobileMenu}
+                            aria-label="Toggle menu"
+                            aria-expanded={isMobileMenuOpen}
+                        >
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+
+                        <nav className="mobile-nav">
+                            <NavigationLinks isMobile={true} />
+                        </nav>
+                    </div>
                 </div>
             </div>
         </header>

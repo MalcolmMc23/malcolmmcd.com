@@ -1,30 +1,268 @@
-/* Header Navigation Styling */
-.right-section nav {
+/* Header Base Styles */
+header {
+    background: var(--background-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
     display: flex;
     align-items: center;
-    gap: 24px; /* Use gap instead of margin-left on individual links for consistency */
-    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.left-section {
+    margin-right: 20px;
+}
+
+.profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.center-section {
+    flex-grow: 1;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header-text h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--text-color-primary);
+}
+
+.header-text p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+    color: var(--text-color-secondary);
+}
+
+/* Desktop Navigation Styles */
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
 }
 
 .nav-link {
-    /* margin-left: 24px; */ /* Generous spacing as per UI/UX guide */
     text-decoration: none;
-    color: var(--text-color-secondary); /* Subtle color for deference */
-    font-size: 16px; /* Legible font size */
-    font-weight: 500; /* Medium weight for clarity */
-    padding: 8px 0; /* Vertical padding for easier touch target */
-    border-bottom: 2px solid transparent; /* Placeholder for active state */
-    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out; /* Smooth transition */
+    color: var(--text-color-secondary);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
 .nav-link:hover {
-    color: var(--text-color-primary); /* Clearer color on hover */
+    color: var(--text-color-primary);
 }
 
 .nav-link.active {
-    color: var(--text-color-primary); /* Active link stands out */
-    border-bottom-color: var(--primary-color); /* Use primary color for active indicator */
-    font-weight: 600; /* Slightly bolder for active state */
+    color: var(--text-color-primary);
+    border-bottom-color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Desktop Dropdown Styles */
+.nav-item.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-item.dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: block;
+    padding: 12px 16px;
+    color: var(--text-color-secondary);
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--text-color-primary);
+}
+
+/* Mobile Navigation Container */
+.mobile-nav-container {
+    display: none;
+}
+
+/* Burger Menu Button */
+.burger-menu {
+    display: none;
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.burger-menu span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--text-color-primary, #333);
+    margin: 6px 0;
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.3s ease-in-out;
+}
+
+/* Mobile Navigation Styles */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 100%; /* Start off-screen */
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 1040; /* Increased z-index */
+    transition: left 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.menu-open .mobile-nav {
+    left: 0; /* Slide in */
+}
+
+/* Mobile Nav Links */
+.mobile-nav .nav-link,
+.mobile-nav .dropdown-item {
+    font-size: 2rem;
+    color: var(--text-color-primary);
+    text-decoration: none;
+    padding: 1rem;
+}
+
+.mobile-nav .nav-link.active,
+.mobile-nav .dropdown-item.active {
+    color: var(--primary-color);
+}
+
+/* Mobile Dropdown */
+.mobile-nav .nav-item.dropdown {
+    text-align: center;
+}
+
+.mobile-nav .nav-item.dropdown .dropdown-content {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.mobile-nav .nav-item.dropdown:focus-within .dropdown-content,
+.mobile-nav .nav-item.dropdown:hover .dropdown-content {
+    display: flex;
+}
+
+.mobile-nav .dropdown-item {
+    font-size: 1.5rem;
+    color: var(--text-color-secondary);
+}
+
+/* Burger to X Animation */
+.menu-open .burger-menu {
+    z-index: 1050; /* Increased z-index */
+}
+.menu-open .burger-menu span {
+    background-color: var(--text-color-primary);
+}
+.menu-open .burger-menu span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+.menu-open .burger-menu span:nth-child(2) {
+    opacity: 0;
+}
+.menu-open .burger-menu span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Responsive Breakpoint */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .mobile-nav-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .burger-menu {
+        display: block;
+        margin-left: 15px;
+    }
+
+    .right-section {
+        min-width: auto;
+    }
+
+    .header-text h1 {
+        font-size: 1.2rem;
+    }
+
+    .header-text p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Freelance Page Specific Styles */
+.nav-item.dropdown.freelance-page .nav-link {
+    color: #2E8B57;
+}
+
+.nav-item.dropdown.freelance-page .nav-link:hover {
+    color: #256d45;
+}
+
+.nav-item.dropdown.freelance-page .nav-link.active {
+    border-bottom-color: #2E8B57;
+}
+
+.nav-item.dropdown.freelance-page .dropdown-content {
+    border-top: 2px solid #2E8B57;
+}
+
+.nav-item.dropdown.freelance-page .dropdown-item:hover {
+    background-color: rgba(46, 139, 87, 0.1);
+    color: #2E8B57;
 }
 
 /* Dropdown Menu Styling */
@@ -145,25 +383,6 @@
     /* Styles for the text block itself if needed */
 }
 
-/* Burger Menu Styles */
-.burger-menu {
-    display: none; /* Hidden by default on larger screens */
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1050; /* Ensure it's above other elements */
-}
-
-.burger-menu span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-color-primary, #333); /* Use variable or default */
-    margin: 5px 0;
-    transition: all 0.3s ease-in-out;
-}
-
 /* Mobile Navigation Container Styles */
 .main-nav {
     /* Base styles for nav container (used on desktop too) */
@@ -173,41 +392,64 @@
     height: 100%;
 }
 
-.close-menu {
-    display: none; /* Hidden by default */
-    background: none;
-    border: none;
-    font-size: 2rem; /* Large 'X' */
-    color: var(--text-color-primary, #333);
-    cursor: pointer;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    z-index: 1060; /* Above nav content */
+.mobile-menu-active .burger-menu {
+    /* Hide the burger menu when the mobile nav is open, it's replaced by the close button */
+    display: none;
 }
 
 /* Responsive Styles (Example breakpoint: 768px) */
 @media (max-width: 768px) {
+    .header-content {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 10px 15px;
+    }
+
+    .center-section {
+        flex-grow: 1;
+        order: 1; /* Ensure it's ordered correctly if wrapping */
+        padding-left: 0; /* Adjust padding for mobile */
+    }
+
+    .header-text h1 {
+        font-size: 1.1rem;
+    }
+
+    .header-text p {
+        font-size: 0.75rem;
+    }
+
+    .right-section {
+        order: 2; /* Position burger menu correctly */
+        padding-right: 0;
+        flex-grow: 0;
+        flex-basis: auto;
+    }
+    
+    .left-section {
+        order: 0; /* Keep profile image to the left */
+    }
+
     .burger-menu {
         display: block; /* Show burger on smaller screens */
     }
 
     .main-nav {
-        /* Hide standard nav, prepare for mobile overlay */
-        display: none; /* Hide nav links container by default */
+        /* This is the mobile overlay style */
+        display: none; /* Hidden by default */
         flex-direction: column;
-        position: fixed; /* Or absolute */
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100vh; /* Full height */
-        background-color: rgba(255, 255, 255, 0.98); /* Semi-transparent white background */
-        padding-top: 60px; /* Space for close button */
-        justify-content: flex-start; /* Align items to top */
-        align-items: center; /* Center items horizontally */
-        gap: 20px; /* Spacing for mobile links */
-        z-index: 1000; /* Ensure it's above page content */
-        overflow-y: auto; /* Allow scrolling if content overflows */
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.98);
+        padding-top: 60px;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+        z-index: 1000;
+        overflow-y: auto;
     }
 
     .main-nav.mobile-nav-open {
@@ -219,73 +461,56 @@
     }
 
     .nav-link {
-        /* Adjust link styles for mobile */
         font-size: 1.2rem;
         padding: 10px 0;
-        border-bottom: none; /* Remove desktop underline */
-        width: 80%; /* Give some width */
-        text-align: center; /* Center text */
+        border-bottom: none;
+        width: 80%;
+        text-align: center;
     }
 
-     .nav-link.active {
-        /* Adjust active styles if needed */
+    .nav-link.active {
         border-bottom: none;
         font-weight: bold;
     }
 
     .nav-item.dropdown {
-        /* Adjust dropdown for mobile */
-        position: static; /* Reset position */
-        display: block; /* Stack vertically */
+        position: static;
+        display: block;
         width: 80%;
         text-align: center;
     }
 
     .dropdown > .nav-link::after {
-        /* Optionally hide or adjust arrow for mobile */
-        /* content: none; */ /* Hide arrow */
+        display: inline-block;
     }
 
     .dropdown-content {
-        /* Adjust dropdown content for mobile */
         position: static;
-        display: block; /* Always show in mobile, or toggle with JS */
+        display: none; /* Hide by default on mobile */
         background-color: transparent;
         box-shadow: none;
-        min-width: auto;
-        padding: 10px 0 0 0; /* Adjust padding */
+        max-height: none;
         opacity: 1;
         visibility: visible;
-        transform: none;
-        border-radius: 0;
-        margin-top: 0;
+        width: 100%;
+        padding-top: 10px;
+        overflow: visible;
     }
 
-    .dropdown-item {
-        padding: 8px 16px;
+    .nav-item.dropdown:hover .dropdown-content {
+        display: block; /* Show on hover/tap */
+    }
+
+    .dropdown-content .dropdown-item {
+        padding: 10px 16px;
         font-size: 1rem;
         color: var(--text-color-secondary);
     }
-     .dropdown-item:hover {
-        background-color: var(--border-color); /* Use theme variable for consistency */
-        color: var(--accent-color);
-    }
-    
-    .nav-item.dropdown.freelance-page .dropdown-item:hover {
-        background-color: rgba(46, 139, 87, 0.1); /* Light SeaGreen background */
-        color: #2E8B57; /* SeaGreen text on hover */
-    }
+}
 
-    .right-section {
-        /* Adjust right section for burger */
-        padding-right: 0; /* Remove padding if burger aligns differently */
-        justify-content: flex-end; /* Keep burger to the right */
-        flex-grow: 0; /* Don't let it grow, burger has fixed size */
-    }
+.dropdown-item:hover {
+    background-color: var(--border-color); /* Use theme variable */
+    color: var(--accent-color); /* Change text to accent blue on hover */
+}
 
-    /* You might need to adjust .header-content padding/margins too */
-    .header-content {
-        padding: 0 15px; /* Slightly less padding on mobile */
-    }
-
-} 
+/* ... existing code ... */ 
