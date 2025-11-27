@@ -41,90 +41,170 @@ function NewUIPage() {
                 lineHeight: '1.8',
                 backgroundColor: '#ffffff',
             }}>
-                <div style={{ marginBottom: '12px' }}>
-                    <a
-                        href="https://x.com/MalcolmMcD05"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                            color: '#0000EE',
-                            textDecoration: 'underline',
-                            fontSize: '13px',
-                            fontFamily: 'Arial, sans-serif',
-                        }}
-                    >
-                        https://x.com/MalcolmMcD05
-                    </a>
+                <div style={{ marginBottom: '30px' }}>
+                    <h2 style={{
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        color: '#000000',
+                        fontFamily: 'Arial, sans-serif',
+                        marginBottom: '12px',
+                    }}>
+                        my links
+                    </h2>
+                    <div style={{ marginBottom: '12px' }}>
+                        <a
+                            href="https://x.com/MalcolmMcD05"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                color: '#0000EE',
+                                textDecoration: 'underline',
+                                fontSize: '13px',
+                                fontFamily: 'Arial, sans-serif',
+                            }}
+                        >
+                            https://x.com/MalcolmMcD05
+                        </a>
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                        <a
+                            href="https://www.linkedin.com/in/malcolm-mcd/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                color: '#0000EE',
+                                textDecoration: 'underline',
+                                fontSize: '13px',
+                                fontFamily: 'Arial, sans-serif',
+                            }}
+                        >
+                            https://www.linkedin.com/in/malcolm-mcd
+                        </a>
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                        <a
+                            href="https://www.youtube.com/@MalcolmMcD/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                color: '#0000EE',
+                                textDecoration: 'underline',
+                                fontSize: '13px',
+                                fontFamily: 'Arial, sans-serif',
+                            }}
+                        >
+                            https://www.youtube.com/@MalcolmMcD
+                        </a>
+                        <span style={{ color: '#000000', fontSize: '13px', fontFamily: 'Arial, sans-serif', marginLeft: '8px' }}>
+                            (just wait)
+                        </span>
+                    </div>
                 </div>
-                <div style={{ marginBottom: '12px' }}>
-                    <a
-                        href="https://www.dormparty.live/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                            color: '#0000EE',
-                            textDecoration: 'underline',
-                            fontSize: '13px',
-                            fontFamily: 'Arial, sans-serif',
-                        }}
-                    >
-                        https://www.dormparty.live/
-                    </a>
-                    <span style={{ color: '#000000', fontSize: '13px', fontFamily: 'Arial, sans-serif', marginLeft: '8px' }}>
-                        (got acquired)
-                    </span>
+
+                <div>
+                    <h2 style={{
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        color: '#000000',
+                        fontFamily: 'Arial, sans-serif',
+                        marginBottom: '12px',
+                    }}>
+                        things ive done
+                    </h2>
+                    <div style={{ marginBottom: '20px', paddingLeft: '20px' }}>
+                        <div style={{ marginBottom: '8px' }}>
+                            <a
+                                href="https://www.dormparty.live/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                    color: '#0000EE',
+                                    textDecoration: 'underline',
+                                    fontSize: '13px',
+                                    fontFamily: 'Arial, sans-serif',
+                                }}
+                            >
+                                https://www.dormparty.live/
+                            </a>
+                            <span style={{ color: '#000000', fontSize: '13px', fontFamily: 'Arial, sans-serif', marginLeft: '8px' }}>
+                                (acquired)
+                            </span>
+                        </div>
+                        <div style={{ marginBottom: '8px' }}>
+                            <a
+                                href="https://www.instagram.com/kupid.live/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                    color: '#0000EE',
+                                    textDecoration: 'underline',
+                                    fontSize: '13px',
+                                    fontFamily: 'Arial, sans-serif',
+                                }}
+                            >
+                                https://www.instagram.com/kupid.live/
+                            </a>
+                            <span style={{ color: '#000000', fontSize: '13px', fontFamily: 'Arial, sans-serif', marginLeft: '8px' }}>
+                                (+41 mil views)
+                            </span>
+                        </div>
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                        <a
+                            href="https://www.tryacneai.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                color: '#0000EE',
+                                textDecoration: 'underline',
+                                fontSize: '13px',
+                                fontFamily: 'Arial, sans-serif',
+                            }}
+                        >
+                            https://www.tryacneai.com/
+                        </a>
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                        <a
+                            href="https://www.tryalumo.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                color: '#0000EE',
+                                textDecoration: 'underline',
+                                fontSize: '13px',
+                                fontFamily: 'Arial, sans-serif',
+                            }}
+                        >
+                            https://www.tryalumo.com/
+                        </a>
+                        <span style={{ color: '#000000', fontSize: '13px', fontFamily: 'Arial, sans-serif', marginLeft: '8px' }}>
+                            (won a hackathon)
+                        </span>
+                    </div>
                 </div>
-                <div style={{ marginBottom: '12px' }}>
-                    <a
-                        href="https://www.instagram.com/kupid.live/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                            color: '#0000EE',
-                            textDecoration: 'underline',
-                            fontSize: '13px',
-                            fontFamily: 'Arial, sans-serif',
-                        }}
-                    >
-                        https://www.instagram.com/kupid.live/
-                    </a>
-                    <span style={{ color: '#000000', fontSize: '13px', fontFamily: 'Arial, sans-serif', marginLeft: '8px' }}>
-                        (41+ mil views)
-                    </span>
-                </div>
-                <div style={{ marginBottom: '12px' }}>
-                    <a
-                        href="https://www.tryacneai.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                            color: '#0000EE',
-                            textDecoration: 'underline',
-                            fontSize: '13px',
-                            fontFamily: 'Arial, sans-serif',
-                        }}
-                    >
-                        https://www.tryacneai.com/
-                    </a>
-                </div>
-                <div style={{ marginBottom: '12px' }}>
-                    <a
-                        href="https://www.tryalumo.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                            color: '#0000EE',
-                            textDecoration: 'underline',
-                            fontSize: '13px',
-                            fontFamily: 'Arial, sans-serif',
-                        }}
-                    >
-                        https://www.tryalumo.com/
-                    </a>
-                    <span style={{ color: '#000000', fontSize: '13px', fontFamily: 'Arial, sans-serif', marginLeft: '8px' }}>
-                        (won a hackathon)
-                    </span>
-                </div>
+            </div>
+            <div style={{
+                padding: '40px 20px',
+                textAlign: 'center',
+                fontFamily: 'Arial, sans-serif',
+                fontSize: '13px',
+                backgroundColor: '#ffffff',
+            }}>
+                <span style={{ color: '#000000', fontSize: '13px', fontFamily: 'Arial, sans-serif', marginRight: '8px' }}>
+                    if you need me
+                </span>
+                <a
+                    href="mailto:malcolm.e.mcdonald@gmail.com"
+                    style={{
+                        color: '#0000EE',
+                        textDecoration: 'underline',
+                        fontSize: '13px',
+                        fontFamily: 'Arial, sans-serif',
+                    }}
+                >
+                    malcolm.e.mcdonald@gmail.com
+                </a>
             </div>
             <div style={{
                 height: '100vh',
