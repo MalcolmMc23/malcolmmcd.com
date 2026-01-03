@@ -123,5 +123,81 @@ router.get('/logs', logRateLimiter, (req, res) => {
     }
 });
 
+/**
+ * GET /api/attack-analysis
+ * Analyze logs to identify DDoS patterns and top attacking IPs
+ */
+router.get('/attack-analysis', logRateLimiter, (req, res) => {
+    try {
+        const logs = logStorage.getLogs(10000); // Get more logs for analysis
+
+        // Count requests per IP
+        const ipCounts = new Map();
+        const ipDetails = new Map();
+
+        logs.forEach(log => {
+            const ip = log.ip;
+            if (ip && ip !== 'unknown') {
+                ipCounts.set(ip, (ipCounts.get(ip) || 0) + 1);
+
+                if (!ipDetails.has(ip)) {
+                    ipDetails.set(ip, {
+                        ip,
+                        count: 0,
+                        userAgents: new Set(),
+                        paths: new Set(),
+                        firstSeen: log.timestamp,
+                        lastSeen: log.timestamp,
+                        suspicious: log.suspicious,
+                    });
+                }
+
+                const details = ipDetails.get(ip);
+                details.count++;
+                if (log.userAgent) details.userAgents.add(log.userAgent);
+                if (log.path) details.paths.add(log.path);
+                if (log.timestamp < details.firstSeen) details.firstSeen = log.timestamp;
+                if (log.timestamp > details.lastSeen) details.lastSeen = log.timestamp;
+                if (log.suspicious) details.suspicious = true;
+            }
+        });
+
+        // Sort by request count (descending)
+        const topIPs = Array.from(ipDetails.values())
+            .sort((a, b) => b.count - a.count)
+            .slice(0, 50)
+            .map(details => ({
+                ...details,
+                userAgents: Array.from(details.userAgents),
+                paths: Array.from(details.paths),
+            }));
+
+        // Calculate statistics
+        const totalRequests = logs.length;
+        const uniqueIPs = ipCounts.size;
+        const suspiciousIPs = topIPs.filter(ip => ip.suspicious).length;
+
+        res.status(200).json({
+            success: true,
+            analysis: {
+                totalRequests,
+                uniqueIPs,
+                suspiciousIPs,
+                topAttackingIPs: topIPs,
+                timeRange: {
+                    start: logs[0]?.timestamp,
+                    end: logs[logs.length - 1]?.timestamp,
+                },
+            },
+        });
+    } catch (error) {
+        console.error('Error analyzing attacks:', error);
+        res.status(500).json({
+            success: false,
+            error: 'Failed to analyze attacks',
+        });
+    }
+});
+
 module.exports = router;
 
