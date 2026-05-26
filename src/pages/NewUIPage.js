@@ -163,6 +163,9 @@ function NewUIPage() {
                         >
                             https://www.tryacneai.com/
                         </a>
+                        <span style={{ color: '#000000', fontSize: '13px', fontFamily: 'Arial, sans-serif', marginLeft: '8px' }}>
+                            (+7K downloads)
+                        </span>
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                         <a
@@ -181,6 +184,21 @@ function NewUIPage() {
                         <span style={{ color: '#000000', fontSize: '13px', fontFamily: 'Arial, sans-serif', marginLeft: '8px' }}>
                             (won a hackathon)
                         </span>
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                        <a
+                            href="https://freefoodmaps.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                color: '#0000EE',
+                                textDecoration: 'underline',
+                                fontSize: '13px',
+                                fontFamily: 'Arial, sans-serif',
+                            }}
+                        >
+                            https://freefoodmaps.com/
+                        </a>
                     </div>
                 </div>
             </div>
@@ -215,4 +233,3 @@ function NewUIPage() {
 }
 
 export default NewUIPage;
-
