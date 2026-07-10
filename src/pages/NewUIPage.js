@@ -164,7 +164,7 @@ function NewUIPage() {
                             https://www.tryacneai.com/
                         </a>
                         <span style={{ color: '#000000', fontSize: '13px', fontFamily: 'Arial, sans-serif', marginLeft: '8px' }}>
-                            (+7K downloads)
+                            (+9K downloads)
                         </span>
                     </div>
                     <div style={{ marginBottom: '12px' }}>
@@ -198,6 +198,36 @@ function NewUIPage() {
                             }}
                         >
                             https://freefoodmaps.com/
+                        </a>
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                        <a
+                            href="https://www.layouts.md/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                color: '#0000EE',
+                                textDecoration: 'underline',
+                                fontSize: '13px',
+                                fontFamily: 'Arial, sans-serif',
+                            }}
+                        >
+                            https://www.layouts.md/
+                        </a>
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                        <a
+                            href="https://altopages.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                color: '#0000EE',
+                                textDecoration: 'underline',
+                                fontSize: '13px',
+                                fontFamily: 'Arial, sans-serif',
+                            }}
+                        >
+                            https://altopages.com/
                         </a>
                     </div>
                 </div>
